@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>NSW-DBI by v.Kolerts</title>
+	<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body>
+  <div id="info">
+    <span id="status"></span>
+    <br/>
+    <span id="error"></span>
+  </div>
+
+  <div id="main">
+
+  	<button id="nsp_file_btn" onclick="getEl('nsp_file').click()">Add NSP files</button>
+  	<input type="file" multiple="multiple" id="nsp_file" accept=".nsp,.nsz,.xci" onchange="addNsp(this)" style="display: none"/>
+    <hr/>
+
+    <p id="nsp_list"></p>
+    <button class="s" id="nsp_send_btn" onclick="nspSend()">Send NSP list</button>
+    <button class="s" id="nsp_stop_btn" onclick="nspStop()">Stop NSP sending</button>
+    <button class="s" id="nsp_clear_btn" onclick="nspClear()">Clear NSP list</button>
+  </div>
+  <div id="footer">
+    <img src="nsw-dbi.svg" width="12px">
+    <span class="title">NSW-DBI<br/><small>by v.Kolerts</small></span>
+  </div>
+</body>
+  <script type='text/javascript' src="htmlHelper.js"></script>
+  <script type='text/javascript' src="helpers.js"></script>
+  <script type='text/javascript' src="main.js"></script>
+</html>

@@ -1,0 +1,37 @@
+{
+  "name": "NSW-DBI",
+  "version": "1.0.0-b",
+  "description": "DBI backend GUI",
+  "main": "index.js",
+  "scripts": {
+    "electron-rebuild": "$(npm bin)/electron-rebuild",
+    "start": "electron . --inspect",
+    "build": "npm-run-all build-*",
+    "pack": "npm-run-all pack-*",
+    "build-mac": "electron-packager . --overwrite --prune=true --platform=darwin --arch=x64 --out=../out --icon=../assets/app-icon/mac/app.icns --osx-sign.identity='Developer ID Application: GitHub' --extend-info=../assets/mac/info.plist",
+    "build-win": "electron-packager . --overwrite --prune=true --platform=win32 --arch=ia32 --out=../out --icon=../assets/app-icon/win/app.ico",
+    "build-linux": "electron-packager . --overwrite --prune=true --platform=linux --arch=x64 --out=../out --icon=html/nsw-dbi.svg",
+    "pack-win": "../script/win.sh",
+    "pack-linux": "electron-installer-debian --src ../out/NSW-DBI-linux-x64/ --dest ../out/NSW-DBI-linux-x64/build --arch amd64 --icon=html/nsw-dbi.svg"
+  },
+  "keywords": [
+    "dbibackend",
+    "switch",
+    "nsp",
+    "usb"
+  ],
+  "author": "v.Kolerts",
+  "email": "str.mail.ru@bk.ru",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vKolerts/dbi-nsw"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "switch-dbi": "1.1.1"
+  },
+  "devDependencies": {
+    "electron": "7.3.3",
+    "electron-rebuild": "2.0.3"
+  }
+}

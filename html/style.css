@@ -1,0 +1,173 @@
+body {
+	color: #fff;
+	background: #3a3c43;
+	font-family: 'BlinkMacSystemFont', 'Lucida Grande', 'Segoe UI', Ubuntu, Cantarell, sans-serif;
+	padding-top: 24px;
+	/*display: flex;
+	flex-direction: column;
+	justify-content: center;
+	height: 800px;*/
+}
+
+h3 {
+	font-weight: normal;
+    margin-top: 0;
+}
+
+hr {
+    border: 1px solid #445;
+}
+
+div {
+	/*border: 1px solid #636D81;*/
+	margin: 10px;
+	padding: 15px;
+	padding-left: 30px;
+	padding-right: 30px;
+	background: #2E3038;
+	min-width: 600px;
+}
+
+p {
+	margin: 2px;
+}
+
+label {
+	color: #bbb;
+	width: 160px;
+	display: inherit;
+	font-size: .75rem;
+	margin-top: 10px;
+}
+
+input, select {
+	width: 100%;
+	margin: 1px;
+	padding: 10px;
+	border: none;
+	font-size: 16px;
+	box-sizing: border-box;
+	margin-bottom: 0;
+	line-height: 1.1em;
+	color: #fff;
+	background: #3C3F4D;
+	-webkit-appearance: none;
+	border-radius: 1px;
+	vertical-align: baseline;
+}
+
+button {
+	background: #41a259;
+	color: #fff;
+	border: none;
+	box-sizing: border-box;
+	justify-content: center;
+	padding: 8px 20px;
+	border-radius: 2px;
+	/*font-weight: bold;*/
+	text-decoration: none;
+	-webkit-appearance: button;
+	cursor: pointer;
+	text-transform: none;
+	outline: 0 !important;
+	width: 100%;
+}
+	button:disabled {
+		cursor: not-allowed;
+		color: #bbb;
+		background: #445 !important;
+	}
+	button::-moz-focus-inner {
+	  border: 0;
+	}
+	button:hover {
+		background: #319249;
+	}
+
+table {
+	width: 100%;
+	border-spacing: 0;
+}
+
+th {
+	color: #58686B;
+	border-bottom: 1px solid #445;
+}
+
+td {
+	text-align: center;
+	padding: 10px;
+}
+
+tr:nth-child(2n) {
+	background: #30333C;
+}
+
+#info {
+	font-size: 12px;
+	width: 100%;
+	position: fixed;
+	left: 0;
+	top: 0;
+	padding: 0;
+	margin: 0;
+	text-align: center;
+	border: none;
+	background: #2E3038BB;
+    z-index: 10;
+}
+
+.blink {
+	font-size: 19px;
+	-webkit-transition: font-size 0s !important;
+}
+
+#status {
+	color: #636D81;
+	transition: 1s;
+	-webkit-transition: font-size 0.1s;
+}
+
+#error {
+	color: #BC3B4D;
+	font-weight: bold;
+	transition: 1s;
+	-webkit-transition: font-size 0.1s;
+}
+
+
+#footer {
+	text-align: center;
+}
+
+
+.close {
+	cursor: pointer;
+	position: absolute;
+    right: 20px;
+    top: 12px;
+    opacity: 0.3;
+}
+
+.m {
+	width: 49.5%;
+}
+
+.s {
+	width: 32.6%;
+}
+
+.ok, .fail {
+	color: #fff;
+	padding: 0px 10px 1px 10px;
+	border-radius: 2px;
+	cursor: default;
+}
+
+.ok {
+	background: #319249;
+}
+
+.fail {
+	background: #BC3B4D;
+}
