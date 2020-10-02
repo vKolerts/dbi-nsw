@@ -1,4 +1,4 @@
-![alt logo](https://github.com/vKolerts/dbi-nsw/blob/master/html/nsw-dbi.svg?raw=true)
+![alt logo](https://github.com/vKolerts/dbi-nsw/blob/master/html/nsw-dbi.svg?raw=true  =250x)
 # NSW-DBI
 Node.js port of https://github.com/lunixoid/dbibackend with GUI(electron).
 
