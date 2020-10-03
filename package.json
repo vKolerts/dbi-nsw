@@ -1,6 +1,6 @@
 {
   "name": "NSW-DBI",
-  "version": "1.0.0-b",
+  "version": "1.0.1-b",
   "description": "DBI backend GUI",
   "main": "index.js",
   "scripts": {

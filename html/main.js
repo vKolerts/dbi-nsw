@@ -1,14 +1,25 @@
 const DBI = require('switch-dbi');
+const Path = require('path');
+const fs = require('fs');
 
 let dbi;
 let list = {};
 nspDrawList();
+initDragDrop(getEl('main'), ({files}) => {
+  addNsp({files});
+})
 
 async function addNsp(input) {
   await nspStop();
-  console.log(input.files);
-  for (let i =  0; i < input.files.length; i++) {
-    const {name, path, size} = input.files[i];
+  const files = [...input.files];
+
+  for (let i =  0; i < files.length; i++) {
+    const {name, path, size} = files[i];
+    if (fs.statSync(path).isDirectory()) {
+      readDirRecursive(path, files);
+      continue;
+    }
+
     list[name] = {
       name,
       path,
@@ -20,6 +31,27 @@ async function addNsp(input) {
 
   input.value = '';
   nspDrawList();
+}
+
+function readDirRecursive(path, files) {
+  for (const f of fs.readdirSync(path)) {
+    const ext = f.split('.').pop();
+    if (!['nsp', 'nsz','xci'].includes(ext)) continue;
+    const file = {
+      name: f,
+      path: Path.join(path, f),
+      size: 0,
+    };
+    const stat = fs.statSync(file.path);
+    if (stat.isDirectory()) {
+      readDirRecursive(file.path, files)
+      continue;
+    }
+
+    file.size = stat.size;
+    files.push(file);
+    console.log({file, files});
+  };
 }
 
 async function nspSend() {

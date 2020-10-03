@@ -45,6 +45,28 @@ function upload(input, callback) {
     fr.onload = r => {callback(r.target.result)};
 }
 
+function initDragDrop(dropArea, func) {
+  ['dragenter', 'dragover'].forEach(event => {
+    dropArea.addEventListener(event, (e) => {
+      preventDef(e);
+      dropArea.classList.add('highlight');
+    }, false)
+  });
+
+  ['dragleave', 'drop'].forEach(event => {
+    dropArea.addEventListener(event, (e) => {
+      preventDef(e);
+      dropArea.classList.remove('highlight');
+      if (event === 'drop') func(e.dataTransfer);
+    }, false)
+  });
+}
+
+function preventDef(e) {
+  e.preventDefault();
+  e.stopPropagation();
+}
+
 const cfgSet = (key, val) => {
   if (typeof val != 'string') {
     val = JSON.stringify(val);
