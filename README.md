@@ -5,6 +5,7 @@ Node.js port of https://github.com/lunixoid/dbibackend with GUI(electron).
 - more user friendly interface;
 - don`t need restarting application everytime;
 - visualization of the installation process;
+- drag and drop for recursive folders reading;
 
 ### Build for Linux:
 
