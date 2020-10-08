@@ -9,7 +9,7 @@ if (handleSquirrelEvent()) {
 let mainWindow;
 
 function createWindow () {
-  const dev = !!process.argv[2];
+  const dev = process.argv[2] === '--inspect';
   mainWindow = new BrowserWindow({
     // width: 760,
     // height: 400,

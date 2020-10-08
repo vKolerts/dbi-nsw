@@ -14,4 +14,5 @@ Node.js port of https://github.com/lunixoid/dbibackend with GUI(electron).
 
 ### Build for Windows:
 
-Please contact me if you have expirience of building electron app with usb nmp-module for Windows.
+- install NSW-DBI-win32-install.exe
+- run by link on desktop

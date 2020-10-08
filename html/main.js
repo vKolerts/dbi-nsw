@@ -8,6 +8,8 @@ nspDrawList();
 initDragDrop(getEl('main'), ({files}) => {
   addNsp({files});
 })
+chkArgs();
+
 
 async function addNsp(input) {
   await nspStop();
@@ -31,27 +33,6 @@ async function addNsp(input) {
 
   input.value = '';
   nspDrawList();
-}
-
-function readDirRecursive(path, files) {
-  for (const f of fs.readdirSync(path)) {
-    const ext = f.split('.').pop();
-    if (!['nsp', 'nsz','xci'].includes(ext)) continue;
-    const file = {
-      name: f,
-      path: Path.join(path, f),
-      size: 0,
-    };
-    const stat = fs.statSync(file.path);
-    if (stat.isDirectory()) {
-      readDirRecursive(file.path, files)
-      continue;
-    }
-
-    file.size = stat.size;
-    files.push(file);
-    console.log({file, files});
-  };
 }
 
 async function nspSend() {
@@ -155,4 +136,46 @@ function dbiEvents(event, data) {
 
   status(event);
   error();
+}
+
+
+function chkArgs() {
+  // console.log({argv});
+  if (!argv || !argv.length) return;
+  let files = [];
+  for (const f of argv) {
+    readFile(f, files);
+  }
+
+  addNsp({files});
+}
+
+function readDirRecursive(path, files) {
+  for (const f of fs.readdirSync(path)) {
+    readFile(Path.join(path, f), files);
+  };
+}
+
+function readFile(path, files) {
+  if (!path.includes(Path.sep)) return;
+
+  const stat = fs.statSync(path);
+  if (stat.isDirectory()) {
+    readDirRecursive(path, files);
+    return;
+  }
+
+  name = path.split(Path.sep).pop();
+  const ext = name.split('.').pop();
+  if (!['nsp', 'nsz','xci'].includes(ext)) return;
+
+  const file = {
+    name,
+    path,
+    size: stat.size,
+  };
+  files.push(file);
+  // console.log({file, files});
+
+  return file;
 }

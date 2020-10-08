@@ -1,5 +1,7 @@
-const {clipboard} = require('electron');
+const {clipboard, remote} = require('electron');
 const audioError = new global.window.Audio('file://' + __dirname + '/dialog-warning.oga');
+
+const argv = remote.process.argv.splice(remote.process.argv[1] === '.' ? 2 : 1);
 
 function error(err = '') {
   if (err) console.error(err);

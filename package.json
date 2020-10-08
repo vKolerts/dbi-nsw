@@ -1,16 +1,14 @@
 {
   "name": "NSW-DBI",
-  "version": "1.0.1-b",
+  "version": "1.0.2-b",
   "description": "DBI backend GUI",
   "main": "index.js",
   "scripts": {
     "electron-rebuild": "$(npm bin)/electron-rebuild",
     "start": "electron . --inspect",
-    "build": "npm-run-all build-*",
-    "pack": "npm-run-all pack-*",
-    "build-mac": "electron-packager . --overwrite --prune=true --platform=darwin --arch=x64 --out=../out --icon=../assets/app-icon/mac/app.icns --osx-sign.identity='Developer ID Application: GitHub' --extend-info=../assets/mac/info.plist",
-    "build-win": "electron-packager . --overwrite --prune=true --platform=win32 --arch=ia32 --out=../out --icon=../assets/app-icon/win/app.ico",
-    "build-linux": "electron-packager . --overwrite --prune=true --platform=linux --arch=x64 --out=../out --icon=html/nsw-dbi.svg",
+    "build-mac": "electron-packager . --overwrite --asar=true --prune=true --platform=darwin --arch=x64 --out=../out --icon=../assets/app-icon/mac/app.icns --osx-sign.identity='Developer ID Application: GitHub' --extend-info=../assets/mac/info.plist",
+    "build-win": "electron-packager . --overwrite --asar=true --prune=true --platform=win32 --arch=ia32 --out=../out --icon=../assets/app-icon/win/app.ico",
+    "build-linux": "electron-packager . --overwrite --asar=true --prune=true --platform=linux --arch=x64 --out=../out --icon=html/nsw-dbi.svg",
     "pack-win": "../script/win.sh",
     "pack-linux": "electron-installer-debian --src ../out/NSW-DBI-linux-x64/ --dest ../out/NSW-DBI-linux-x64/build --arch amd64 --icon=html/nsw-dbi.svg"
   },
@@ -28,7 +26,7 @@
   },
   "license": "ISC",
   "dependencies": {
-    "switch-dbi": "1.1.1"
+    "switch-dbi": "1.1.3"
   },
   "devDependencies": {
     "electron": "7.3.3",
