@@ -5,7 +5,7 @@ const fs = require('fs');
 let dbi;
 let list = {};
 nspDrawList();
-initDragDrop(getEl('main'), ({files}) => {
+initDragDrop(getEl('dnd_overlay'), ({files}) => {
   addNsp({files});
 })
 chkArgs();
@@ -52,7 +52,8 @@ async function nspSend() {
     return error(err)
   }
 
-  status('Files loaded');
+  getEl('nsp_stop_btn').disabled = false;
+  status('DBI sending server started');
   return error();
 }
 
@@ -63,17 +64,19 @@ async function nspStop() {
   await dbi.exit();
   delete dbi;
 
-  status('dbi stoped');
+  status('DBI sending server stoped');
   return;
 }
 
 function nspDrawList() {
   if (!Object.keys(list).length) {
     getEl('nsp_clear_btn').disabled = true;
+    getEl('nsp_send_btn').disabled = true;
     return setText('nsp_list', '<p align="center">list empty</p>');
   }
 
   getEl('nsp_clear_btn').disabled = false;
+  getEl('nsp_send_btn').disabled = false;
   const rows = Object.values(list).map(({name, path, humanSize, state}) => `<tr title="${path}">
   <td style="text-align:left">${name}</td>
   <td>${humanSize}</td>
@@ -117,9 +120,10 @@ function dbiEvents(event, data) {
       state = 'finished';
       status('Finished nsp ' + data.nspName);
     }
-    else if (data.range_size === 4194304) {
-      const percent = ((data.range_offset + data.range_size) * 100/ list[data.nspName].size)
-      state = `proccess ${humanFileSize(data.range_offset + data.range_size)} (${percent.toFixed(2)} %)`;
+    else if ([2097152, 4194304].includes(data.range_size)) {
+      const sended = (data.range_offset + data.range_size);
+      const percent = (sended * 100/ list[data.nspName].size)
+      state = `proccess ${humanFileSize(sended)} (${percent.toFixed(2)} %)`;
     }
     else if (state.includes('proccess')) {
       state = `proccess ${humanFileSize(list[data.nspName].size)} (100.00 %)`;

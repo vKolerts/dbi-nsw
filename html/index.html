@@ -6,6 +6,7 @@
 	<link rel="stylesheet" href="style.css" type="text/css">
 </head>
 <body>
+  <div id="dnd_overlay"></div>
   <div id="info">
     <span id="status"></span>
     <br/>
@@ -14,14 +15,14 @@
 
   <div id="main">
 
-  	<button id="nsp_file_btn" onclick="getEl('nsp_file').click()">Add NSP files</button>
+  	<button id="nsp_file_btn" onclick="getEl('nsp_file').click()">Add files</button>
   	<input type="file" multiple="multiple" id="nsp_file" accept=".nsp,.nsz,.xci" onchange="addNsp(this)" style="display: none"/>
     <hr/>
 
     <p id="nsp_list"></p>
-    <button class="s" id="nsp_send_btn" onclick="nspSend()">Send NSP list</button>
-    <button class="s" id="nsp_stop_btn" onclick="nspStop()">Stop NSP sending</button>
-    <button class="s" id="nsp_clear_btn" onclick="nspClear()">Clear NSP list</button>
+    <button class="" id="nsp_clear_btn" onclick="nspClear()">Clear list</button> <hr/>
+    <button class="m blue" id="nsp_send_btn" onclick="nspSend()" disabled="disabled">Send list</button>
+    <button class="m red" id="nsp_stop_btn" onclick="nspStop()" disabled="disabled">Stop sending</button>
   </div>
   <div id="footer">
     <img src="nsw-dbi.svg" width="12px">

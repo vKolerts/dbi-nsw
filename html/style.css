@@ -19,11 +19,8 @@ hr {
 }
 
 div {
-	border: 2px solid #2E3038;
 	margin: 10px;
-	padding: 15px;
-	padding-left: 30px;
-	padding-right: 30px;
+	padding: 15px 30px;
 	background: #2E3038;
 	min-width: 600px;
 }
@@ -72,16 +69,22 @@ button {
 	outline: 0 !important;
 	width: 100%;
 }
+	button::-moz-focus-inner {
+	  border: 0;
+	}
+	button.blue {
+		background: #3B4DBC;
+	}
+	button.red {
+		background: #BC3B4D;
+	}
+	button:hover {
+		opacity: 0.9;
+	}
 	button:disabled {
 		cursor: not-allowed;
 		color: #bbb;
 		background: #445 !important;
-	}
-	button::-moz-focus-inner {
-	  border: 0;
-	}
-	button:hover {
-		background: #319249;
 	}
 
 table {
@@ -113,8 +116,8 @@ tr:nth-child(2n) {
 	margin: 0;
 	text-align: center;
 	border: none;
-	background: #2E3038BB;
-    z-index: 10;
+	background: #2E3038;
+  z-index: 10;
 }
 
 .blink {
@@ -140,9 +143,18 @@ tr:nth-child(2n) {
 	text-align: center;
 }
 
-.highlight {
-	background: #2E3038BB;
-	border: 2px dotted #319249;
+
+#dnd_overlay {
+	display: none;
+	position: fixed;
+	left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 20;
+
+	background: #31924922;
+	border: 5px dashed #319249;
 }
 
 .close {

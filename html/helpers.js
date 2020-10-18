@@ -49,18 +49,18 @@ function upload(input, callback) {
 
 function initDragDrop(dropArea, func) {
   ['dragenter', 'dragover'].forEach(event => {
-    dropArea.addEventListener(event, (e) => {
+    window.addEventListener(event, (e) => {
       preventDef(e);
-      dropArea.classList.add('highlight');
-    }, false)
+      dropArea.style.display = 'block';
+    }, false);
   });
 
   ['dragleave', 'drop'].forEach(event => {
     dropArea.addEventListener(event, (e) => {
       preventDef(e);
-      dropArea.classList.remove('highlight');
+      dropArea.style.display = 'none';
       if (event === 'drop') func(e.dataTransfer);
-    }, false)
+    }, false);
   });
 }
 
